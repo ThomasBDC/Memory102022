@@ -14,3 +14,6 @@
 .card.hidden{
     background-color: red;
 }
+.card.finded{
+    color:green;
+}
