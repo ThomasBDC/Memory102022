@@ -8,6 +8,7 @@ TODO LIST
 - Pouvoir relancer une partie
 - Gérer le bug du click deux fois sur une même image
 - Compter le nombre de coûts pour gagner (stocker des stats en cookie ?)
+
 */
 
 
