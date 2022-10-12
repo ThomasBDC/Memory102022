@@ -1,7 +1,6 @@
 /*
 TODO LIST
 
-- Ajouter une animation (confeti) lors de victoire 
 - Compter le nombre de coûts pour gagner (stocker des stats en cookie ?)
 
 */
@@ -21,6 +20,21 @@ document.getElementById("playButton").addEventListener("click", function(){
     let nbCardInput = document.getElementById("nbCardInput");
     initGame(nbCardInput.value);
 });
+
+document.getElementById("masCards").addEventListener("click", function(){
+    let nbCardInput = document.getElementById("nbCardInput");
+    if(nbCardInput.value < 6){
+        nbCardInput.value ++;
+    }
+});
+
+document.getElementById("menosCards").addEventListener("click", function(){
+    let nbCardInput = document.getElementById("nbCardInput");
+    if(nbCardInput.value > 2){
+        nbCardInput.value --;
+    }
+});
+
 
 /*
 Cette fonction gère ce qui se passe
@@ -148,3 +162,4 @@ function stopAnimation(){
     let animateDiv = document.getElementById("allconfettis");
     animateDiv.innerHTML = "";
 }
+
