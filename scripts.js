@@ -102,7 +102,6 @@ function clickOnCardEvent(card){
             if(cptCartesTrouvees == nbPairesOnGame*2){
                 //Animation rigolote
                 setAnimationWin();
-
                 //Partie terminée, je mets à jour les cookies
                 let oldScore = getCookie(AllScoresCookie);
                 let allscore = "";
@@ -121,6 +120,13 @@ function clickOnCardEvent(card){
                     //On a battu le meilleur score !
                     setCookie(BestScoreCookie, nbCoups);
                     BestScoreNode.innerText = nbCoups;
+                    
+                    let audio = new Audio("sounds/cheer2.mp3");
+                    audio.play();
+                }
+                else{
+                    let audio = new Audio("sounds/applause.mp3");
+                    audio.play();
                 }
             }
         }
