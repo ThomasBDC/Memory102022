@@ -11,7 +11,7 @@ let jeuTableau;
 
 let cptClickCurrent = 0;
 let CardClickedId;
-const cards = ["king", "queen", "valet", "as", "kingpiq", "kingtrefle"];
+const cards = ["king", "queen", "valet", "as", "kingPiq", "kingtrefle"];
 const gameBoard = document.getElementById("GameBoard");
 let nbPairesOnGame;
 let cptCartesTrouvees = 0;
