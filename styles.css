@@ -34,7 +34,7 @@ body{
 }
 .card.hidden{
     transform: rotateY(180deg);
-    background-image: url("/img/back.png");
+    background-image: url("img/back.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -134,4 +134,9 @@ button:hover{
 .masOMenosButtons{
     display: flex;
     flex-direction: column;
+}
+
+.enteteJeu{
+    display: flex;
+    justify-content: space-evenly;
 }

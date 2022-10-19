@@ -16,14 +16,29 @@
     <div class="text-bienvenue">
         <h1>Memory Studi Live Game</h1>
         <p>Combien de paires pour jouer ?</p>
-        <div class="game-config">
-            <input id="nbCardInput" type="number" max="6" min="2" value="2"/>
-            <div class="masOMenosButtons">
-                <button id="masCards">+</button>
-                <button id="menosCards">-</button>
+        <div class="enteteJeu">
+            <div>
+                <div class="game-config">
+                    <input id="nbCardInput" type="number" max="6" min="2" value="2"/>
+                    <div class="masOMenosButtons">
+                        <button id="masCards">+</button>
+                        <button id="menosCards">-</button>
+                    </div>
+                </div>
+                <button id="playButton">Play</button>
+            </div>
+            <div>
+                <div>
+                    Score actuel : <span id="NbCoupsCurrent"></span>
+                </div> 
+                <div>
+                    Meilleur score : <span id="BestScore"></span>
+                </div> 
+                <div>
+                    Score moyen :
+                </div> 
             </div>
         </div>
-        <button id="playButton">Play</button>
     </div>
 
     <div id="GameBoard">
