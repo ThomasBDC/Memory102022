@@ -17,11 +17,14 @@ let nbPairesOnGame;
 let cptCartesTrouvees = 0;
 const nbCoupsCurrentNode = document.getElementById("NbCoupsCurrent");
 const BestScoreNode = document.getElementById("BestScore");
+const avgScoreNode = document.getElementById("avgScore");
 const BestScoreCookie ="BestScore";
+const AllScoresCookie = "AllScores"
 
 let nbCoups = 0;
 
 BestScoreNode.innerText = getCookie(BestScoreCookie)
+avgScoreNode.innerText = getAverageNbCoups();
 
 document.getElementById("playButton").addEventListener("click", function(){
     let nbCardInput = document.getElementById("nbCardInput");
@@ -101,7 +104,20 @@ function clickOnCardEvent(card){
                 setAnimationWin();
 
                 //Partie terminée, je mets à jour les cookies
-                if(nbCoups < getCookie(BestScoreCookie)){
+                let oldScore = getCookie(AllScoresCookie);
+                let allscore = "";
+                if(oldScore != null){
+                    allscore = oldScore+"."+nbCoups;
+                }
+                else{
+                    allscore = nbCoups;
+                }
+
+                setCookie(AllScoresCookie, allscore);
+                avgScoreNode.innerText = getAverageNbCoups();
+                
+                if(nbCoups < getCookie(BestScoreCookie) 
+                || getCookie(BestScoreCookie) == null){
                     //On a battu le meilleur score !
                     setCookie(BestScoreCookie, nbCoups);
                     BestScoreNode.innerText = nbCoups;
@@ -184,13 +200,10 @@ function stopAnimation(){
 function setCookie(name, value) {
     // Encode value in order to escape semicolons, commas, and whitespace
     var cookie = name + "=" + encodeURIComponent(value);
-    
-    
-        /* Sets the max-age attribute so that the cookie expires
-        after the specified number of days */
-        cookie += "; max-age=" + (100*24*60*60);
-        
-        document.cookie = cookie;
+    /* Sets the max-age attribute so that the cookie expires
+    after the specified number of days */
+    cookie += "; max-age=" + (100*24*60*60);
+    document.cookie = cookie;
 }
 
 function getCookie(name) {
@@ -211,4 +224,23 @@ function getCookie(name) {
     
     // Return null if not found
     return null;
+}
+
+function getAverageNbCoups(){
+    let allscore = getCookie(AllScoresCookie);
+    if(allscore != null){
+        let allScoreTab = allscore.split(".");
+        let sum = 0;
+        let nbParties = 0;
+        allScoreTab.forEach(score => {
+            sum += +score;
+            nbParties ++;
+        });
+    
+        let moyenne = sum / nbParties;
+        return Math.round(moyenne);
+    }
+    else{
+        return 0;
+    }
 }
